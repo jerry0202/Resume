@@ -17,6 +17,8 @@
             --gray: #64748b;
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-2: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --gradient-ai: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-coding: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
         * {
@@ -248,6 +250,25 @@
             color: var(--accent);
         }
 
+        /* AI Badge */
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--gradient-ai);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 5px rgba(240, 147, 251, 0.5); }
+            to { box-shadow: 0 0 20px rgba(245, 87, 108, 0.8); }
+        }
+
         /* Sections */
         section {
             padding: 6rem 5%;
@@ -305,9 +326,8 @@
         }
 
         .timeline-item:hover {
-            background: rgba(255,255,255,0.05);
             transform: translateX(10px);
-            border-color: rgba(102, 126, 234, 0.5);
+            border-color: var(--accent);
         }
 
         .timeline-item::before {
@@ -317,8 +337,8 @@
             top: 2.5rem;
             width: 12px;
             height: 12px;
-            border-radius: 50%;
             background: var(--gradient);
+            border-radius: 50%;
             border: 3px solid var(--dark);
         }
 
@@ -332,9 +352,8 @@
         }
 
         .timeline-title h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .timeline-title .company {
@@ -343,27 +362,23 @@
         }
 
         .timeline-date {
-            padding: 0.5rem 1rem;
-            background: rgba(102, 126, 234, 0.2);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--accent);
-        }
-
-        .timeline-content {
             color: var(--gray);
-            line-height: 1.8;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
         }
 
         .timeline-content ul {
             list-style: none;
-            padding-left: 0;
+            padding: 0;
         }
 
         .timeline-content li {
+            padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
-            margin-bottom: 0.5rem;
+            color: var(--gray);
         }
 
         .timeline-content li::before {
@@ -374,15 +389,11 @@
         }
 
         .highlight-box {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(6, 182, 212, 0.1);
-            border-left: 3px solid var(--accent);
-            border-radius: 0 10px 10px 0;
-        }
-
-        .highlight-box strong {
-            color: var(--accent);
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--gradient);
+            border-radius: 12px;
+            font-size: 0.95rem;
         }
 
         /* Skills Section */
@@ -393,7 +404,7 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -403,28 +414,54 @@
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         .skill-icon {
             width: 60px;
             height: 60px;
-            border-radius: 15px;
+            border-radius: 16px;
             background: var(--gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
         }
 
+        .skill-card.ai-skill .skill-icon {
+            background: var(--gradient-ai);
+        }
+
+        .skill-card.coding-skill .skill-icon {
+            background: var(--gradient-coding);
+        }
+
         .skill-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
         }
 
@@ -436,16 +473,30 @@
 
         .skill-tag {
             padding: 0.4rem 1rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--gray);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .skill-card.ai-skill .skill-tag:hover {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+
+        .skill-card.coding-skill .skill-tag:hover {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: var(--dark);
         }
 
         /* Global Presence */
         .presence-section {
-            background: rgba(255,255,255,0.02);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
         }
 
         .presence-grid {
@@ -612,6 +663,10 @@
             .presence-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -640,6 +695,10 @@
             }
 
             .presence-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -686,10 +745,14 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>刘靖</h1>
-                <p class="subtitle">海外销售专家 · 国际贸易总监</p>
+                <p class="subtitle">海外销售专家 · 国际贸易总监 · AI应用先锋</p>
                 <p class="description">
                     拥有22年丰富的外贸经验，深耕线上线下业务。曾在多个国家工作生活：美国3年、东南亚4年、中东2年、北非1年。熟练掌握国际贸易全流程，擅长市场拓展和跨国商务谈判，致力于推动中国企业走向全球市场。
                 </p>
+                <span class="ai-badge">
+                    <i class="fas fa-robot"></i>
+                    AI + Vibe Coding 践行者
+                </span>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number">24+</div>
@@ -707,7 +770,7 @@
                 <div class="contact-bar">
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <span>15317584046</span>
+                        <span>18320019150</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
@@ -812,10 +875,46 @@
     <section id="skills">
         <div class="section-header fade-in">
             <h2>专业技能</h2>
-            <p>全方位的国际贸易与跨境电商专业能力</p>
+            <p>全方位的国际贸易与跨境电商专业能力 + AI与Vibe Coding创新技能</p>
         </div>
         <div class="skills-container">
             <div class="skills-grid">
+                <!-- AI Skills -->
+                <div class="skill-card ai-skill fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI 应用与提示工程</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ChatGPT/Claude</span>
+                        <span class="skill-tag">AI工作流设计</span>
+                        <span class="skill-tag">提示词优化</span>
+                        <span class="skill-tag">AI内容生成</span>
+                        <span class="skill-tag">智能客服搭建</span>
+                        <span class="skill-tag">AI辅助决策</span>
+                        <span class="skill-tag">OpenAkita</span>
+                        <span class="skill-tag">多AI协同</span>
+                    </div>
+                </div>
+
+                <!-- Vibe Coding Skills -->
+                <div class="skill-card coding-skill fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Vibe Coding 开发</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AI驱动编程</span>
+                        <span class="skill-tag">快速原型开发</span>
+                        <span class="skill-tag">前端开发</span>
+                        <span class="skill-tag">HTML/CSS/JS</span>
+                        <span class="skill-tag">响应式设计</span>
+                        <span class="skill-tag">Git版本控制</span>
+                        <span class="skill-tag">Vercel部署</span>
+                        <span class="skill-tag">全栈思维</span>
+                    </div>
+                </div>
+
                 <div class="skill-card fade-in">
                     <div class="skill-icon">
                         <i class="fas fa-globe-americas"></i>
@@ -922,7 +1021,7 @@
             <h3>上海大学</h3>
             <p class="degree">本科 · 机械设计制造及其自动化</p>
             <p class="year">1997 - 2001</p>
-            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <span class="skill-tag"><i class="fas fa-language"></i> 英语四级</span>
                 <span class="skill-tag"><i class="fas fa-laptop-code"></i> 计算机四级</span>
             </div>
@@ -932,11 +1031,11 @@
     <footer id="contact">
         <div class="footer-content">
             <h3>期待与您合作</h3>
-            <p>拥有24年国际贸易经验，熟悉全球市场，期待为您的企业开拓海外业务</p>
+            <p>拥有24年国际贸易经验，结合AI与Vibe Coding技术，助力企业数字化转型与全球业务拓展</p>
             <div class="footer-contact">
-                <a href="tel:15317584046">
+                <a href="tel:18320019150">
                     <i class="fas fa-phone"></i>
-                    15317584046
+                    18320019150
                 </a>
                 <a href="mailto:8938016@qq.com" class="secondary">
                     <i class="fas fa-envelope"></i>
@@ -950,7 +1049,7 @@
     </footer>
 
     <script>
-        // Scroll Animation
+        // 滚动动画
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -968,7 +1067,7 @@
             observer.observe(el);
         });
 
-        // Smooth Scroll
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -982,21 +1081,31 @@
             });
         });
 
-        // Navbar scroll effect
-        let lastScroll = 0;
+        // 导航栏背景透明度
+        const nav = document.querySelector('nav');
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
+            if (window.scrollY > 100) {
                 nav.style.background = 'rgba(15, 23, 42, 0.95)';
             } else {
                 nav.style.background = 'rgba(15, 23, 42, 0.8)';
             }
-            
-            lastScroll = currentScroll;
         });
+
+        // 数字动画
+        const animateNumbers = () => {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(num => {
+                const value = num.textContent;
+                num.style.opacity = '0';
+                setTimeout(() => {
+                    num.style.transition = 'opacity 0.5s';
+                    num.style.opacity = '1';
+                }, 300);
+            });
+        };
+
+        // 页面加载完成后执行数字动画
+        window.addEventListener('load', animateNumbers);
     </script>
 </body>
-
 </html>
