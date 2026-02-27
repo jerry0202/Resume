@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘靖 - 海外销售专家 | 国际贸易总监</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 背景动画 */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 5% 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-text .description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: var(--gradient) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .contact-bar {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--gradient);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateX(10px);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.35rem;
+            top: 2.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gradient);
+            border: 3px solid var(--dark);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-title h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-title .company {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .timeline-date {
+            padding: 0.5rem 1rem;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        .timeline-content {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-content li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .highlight-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(6, 182, 212, 0.1);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .highlight-box strong {
+            color: var(--accent);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            padding: 2rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.4rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Global Presence */
+        .presence-section {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .presence-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .presence-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .presence-card:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+
+        .presence-flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .presence-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .presence-card p {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Education */
+        .education-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .education-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .education-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .degree {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .year {
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5%;
+            background: rgba(0,0,0,0.3);
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-content p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-contact a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-contact a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer-contact a.secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+        }
+
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .contact-bar {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .presence-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item::before {
+                left: -2.35rem;
+            }
+
+            .presence-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-contact a {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <nav>
+        <div class="logo">刘靖</div>
+        <ul class="nav-links">
+            <li><a href="#about">关于</a></li>
+            <li><a href="#experience">经历</a></li>
+            <li><a href="#skills">技能</a></li>
+            <li><a href="#presence">全球足迹</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>刘靖</h1>
+                <p class="subtitle">海外销售专家 · 国际贸易总监</p>
+                <p class="description">
+                    拥有22年丰富的外贸经验，深耕线上线下业务。曾在多个国家工作生活：美国3年、东南亚4年、中东2年、北非1年。熟练掌握国际贸易全流程，擅长市场拓展和跨国商务谈判，致力于推动中国企业走向全球市场。
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">24+</div>
+                        <div class="stat-label">年工作经验</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">年海外经验</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$5000万</div>
+                        <div class="stat-label">年销售峰值</div>
+                    </div>
+                </div>
+                <div class="contact-bar">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>18320019150</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>8938016@qq.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>上海</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/profile.png" alt="刘靖" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop'">
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-header fade-in">
+            <h2>工作经历</h2>
+            <p>深耕国际贸易领域，从创业公司到跨国企业的丰富履历</p>
+        </div>
+        <div class="experience-grid">
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>办公室主任</h3>
+                            <span class="company">利比亚国家投资公司 (NIC)</span>
+                        </div>
+                        <span class="timeline-date">2025.01 - 至今</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>对接利比亚政府项目需求及采购需求，促进中利企业深度合作</li>
+                            <li>协调利比亚NIC投资公司与中国企业的经贸合作事宜</li>
+                            <li>负责政府层面的商务对接和项目推进</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>海外市场总监</h3>
+                            <span class="company">沙特OBNC公司</span>
+                        </div>
+                        <span class="timeline-date">2023.01 - 2024.12</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>开拓MENA（中东和北非）阿拉伯国家市场，主导政府及商会高层资源对接</li>
+                            <li>率队访问沙特、利比亚等国，与20+大使/参赞建立合作关系</li>
+                            <li>推动国内企业与当地签署多项合作协议</li>
+                            <li>与沙特能源部、农业部、交通部、住建部深入沟通，了解沙特2030愿景需求</li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>核心业绩：</strong>潜在订单规模超 2000万美元
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>运营总监</h3>
+                            <span class="company">上海靖贸电子商务有限公司</span>
+                        </div>
+                        <span class="timeline-date">2019.01 - 2022.12</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>统筹亚马逊欧美站及美国线下渠道（沃尔玛、Costco等）运营</li>
+                            <li>线上年均销售额 600-800万美元，连续3年复合增长率 25%</li>
+                            <li>线下拓展 1000+ 门店，年均销售额 4000万美元，占公司总营收 55%</li>
+                            <li>目前仍担任其供应商在北美线下渠道的顾问</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>联合创始人</h3>
+                            <span class="company">广州酷杰贸易有限公司</span>
+                        </div>
+                        <span class="timeline-date">2002.12 - 2018.12</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>从0到1搭建B2B/B2C全渠道电商业务</li>
+                            <li>带领团队从初创发展至 100+ 人规模，年均销售额 2亿+ 元，峰值年利润率达 18%</li>
+                            <li>布局阿里巴巴、eBay等6大平台，孵化3个年销千万级爆品</li>
+                            <li>在北美陆续工作生活3年，与Target、Best Buy等线下2B渠道深度合作</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header fade-in">
+            <h2>专业技能</h2>
+            <p>全方位的国际贸易与跨境电商专业能力</p>
+        </div>
+        <div class="skills-container">
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>国际市场拓展</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">中东市场</span>
+                        <span class="skill-tag">北美市场</span>
+                        <span class="skill-tag">东南亚市场</span>
+                        <span class="skill-tag">北非市场</span>
+                        <span class="skill-tag">政府关系</span>
+                        <span class="skill-tag">商会对接</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>电商平台运营</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">亚马逊</span>
+                        <span class="skill-tag">eBay</span>
+                        <span class="skill-tag">阿里巴巴</span>
+                        <span class="skill-tag">B2B/B2C</span>
+                        <span class="skill-tag">沃尔玛</span>
+                        <span class="skill-tag">Costco</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>商务谈判与合作</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">跨国谈判</span>
+                        <span class="skill-tag">渠道拓展</span>
+                        <span class="skill-tag">供应链管理</span>
+                        <span class="skill-tag">大客户管理</span>
+                        <span class="skill-tag">团队管理</span>
+                        <span class="skill-tag">战略规划</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>语言与沟通</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">英语（流利）</span>
+                        <span class="skill-tag">跨文化沟通</span>
+                        <span class="skill-tag">商务英语</span>
+                        <span class="skill-tag">演讲演示</span>
+                        <span class="skill-tag">团队协作</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="presence-section" id="presence">
+        <div class="section-header fade-in">
+            <h2>全球足迹</h2>
+            <p>多国工作生活经历，丰富的跨文化商务经验</p>
+        </div>
+        <div class="presence-grid">
+            <div class="presence-card fade-in">
+                <div class="presence-flag">🇺🇸</div>
+                <h3>美国</h3>
+                <p>3年</p>
+                <small>线下渠道深度合作</small>
+            </div>
+            <div class="presence-card fade-in">
+                <div class="presence-flag">🇸🇦</div>
+                <h3>东南亚</h3>
+                <p>4年</p>
+                <small>市场开拓与运营</small>
+            </div>
+            <div class="presence-card fade-in">
+                <div class="presence-flag">🇦🇪</div>
+                <h3>中东</h3>
+                <p>2年</p>
+                <small>政府项目对接</small>
+            </div>
+            <div class="presence-card fade-in">
+                <div class="presence-flag">🇱🇾</div>
+                <h3>北非</h3>
+                <p>1年</p>
+                <small>经贸合作协调</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="section-header fade-in">
+            <h2>教育背景</h2>
+        </div>
+        <div class="education-card fade-in">
+            <div class="education-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>上海大学</h3>
+            <p class="degree">本科 · 机械设计制造及其自动化</p>
+            <p class="year">1997 - 2001</p>
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
+                <span class="skill-tag"><i class="fas fa-language"></i> 英语四级</span>
+                <span class="skill-tag"><i class="fas fa-laptop-code"></i> 计算机四级</span>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>期待与您合作</h3>
+            <p>拥有24年国际贸易经验，熟悉全球市场，期待为您的企业开拓海外业务</p>
+            <div class="footer-contact">
+                <a href="tel:18320019150">
+                    <i class="fas fa-phone"></i>
+                    18320019150
+                </a>
+                <a href="mailto:8938016@qq.com" class="secondary">
+                    <i class="fas fa-envelope"></i>
+                    8938016@qq.com
+                </a>
+            </div>
+            <p class="copyright">
+                © 2025 刘靖 · 海外销售专家 | 期望薪资：20-40K | 期望城市：上海
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.8)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
